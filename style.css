@@ -1,0 +1,16 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#canvas1 {
+    top: 0;
+    left: 0;
+    background: black;
+    position: absolute;
+}
+
+/* h1 {
+    color: rgb(248, 247, 247);
+} */
