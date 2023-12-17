@@ -5,12 +5,17 @@ const ctx = canvas.getContext("2d");
 
 canvas.width = window.innerWidth;
 canvas.height =window.innerHeight;
-ctx.fillStyle = "purple";
 
+const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+
+gradient.addColorStop(0, "white");
+gradient.addColorStop(0.5, "#ba04ce");
+gradient.addColorStop(1, "#03fcff");
+
+ctx.fillStyle = gradient;
 console.log(ctx)
 
-// ctx.fillStyle = "green";
-// ctx.fillRect(50, 50 , 50, 50);
+
 
 // Note: define what the particles look like
 class Particle {
@@ -23,7 +28,7 @@ class Particle {
         this.vy = Math.random() * 3.5 - 0.5;
     }
     draw(context) {
-        context.fillStyle = 'hsl(' + this.x * .5 + ', 100%, 50%)';
+        // context.fillStyle = 'hsl(' + this.x * .5 + ', 100%, 50%)';
         context.beginPath();
         context.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
         context.fill();
