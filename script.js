@@ -5,6 +5,7 @@ const ctx = canvas.getContext("2d");
 
 canvas.width = window.innerWidth;
 canvas.height =window.innerHeight;
+ctx.fillStyle = "purple";
 
 console.log(ctx)
 
@@ -15,15 +16,16 @@ console.log(ctx)
 class Particle {
     constructor(effect) {
         this.effect = effect;
-        this.x = Math.random() * this.effect.width;
-        this.y = Math.random() * this.effect.height;
-        this.radius = 15;
+        this.radius = 10;
+        this.x = this.radius + Math.random() * (this.effect.width - this.radius * 2);
+        this.y = this.radius + Math.random() * (this.effect.height - this.radius * 2);
     }
     draw(context) {
-        context.fillStyle = "purple"
+        context.fillStyle = 'hsl(' + this.x * .5 + ', 100%, 50%)';
         context.beginPath();
         context.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
         context.fill();
+        context.stroke();
     }
 }
 
@@ -35,7 +37,7 @@ class Effect {
         this.height = this.canvas.height;
 
         this.particles = [];
-        this.numberOfParticles = 20;
+        this.numberOfParticles = 500;
         this.createParticles();
     }
     // Note: create helper method that will run one time
